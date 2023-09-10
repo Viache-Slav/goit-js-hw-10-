@@ -6,7 +6,6 @@ axios.defaults.headers.common["x-api-key"] =
 
 const BREEDS_URL = 'https://api.thecatapi.com/v1/breeds';
 const CAT_URL = 'https://api.thecatapi.com/v1/images/search';
-// const API_KEY = 'live_QJGRZZcM4ssTwmzsOUCkBS067Mx3GJ34fDuZ3vvNM5qXtpyFsGxon25XpCjPOP6A';
 
 function fetchBreeds() {
     return axios.get(BREEDS_URL)

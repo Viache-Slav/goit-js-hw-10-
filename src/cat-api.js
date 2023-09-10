@@ -1,4 +1,19 @@
 
+import './style.css';
+
+function showError(message) {
+  const error = document.querySelector(".error");
+  error.textContent = message;
+  error.classList.remove("hidden");
+  error.classList.add("visible");
+}
+
+function hideError() {
+  const error = document.querySelector(".error");
+  error.classList.remove("visible");
+  error.classList.add("hidden");
+}
+// -------------------------
 import { fetchBreeds, fetchCatByBreed } from "./index.js";
 
 function showElement(element) {
@@ -27,6 +42,7 @@ function showElement(element) {
   fetchBreeds()
   .then((breeds) => {
     hideElement(loader);
+    hideError(); 
     breeds.forEach((breed) => {
       const option = document.createElement("option");
       option.value = breed.id;
