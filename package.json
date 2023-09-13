@@ -28,6 +28,7 @@
     "browserify-zlib": "^0.2.0",
     "buffer": "^6.0.3",
     "events": "^3.3.0",
+    "hint": "^7.1.10",
     "https-browserify": "^1.0.0",
     "parcel": "^2.6.0",
     "parcel-reporter-clean-dist": "^1.0.4",
