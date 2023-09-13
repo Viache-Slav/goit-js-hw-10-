@@ -1,4 +1,5 @@
 import './style.css';
+import { fetchBreeds, fetchCatByBreed } from "./cat-api.js";
 
 function showError(message) {
   const error = document.querySelector(".error");
@@ -13,7 +14,6 @@ function hideError() {
   error.classList.add("hidden");
 }
 // -------------------------
-import { fetchBreeds, fetchCatByBreed } from "./cat-api.js";
 
 function showElement(element) {
     if (element.hasAttribute('data-display')) {
@@ -79,14 +79,11 @@ function showElement(element) {
           const p = document.createElement("p");
           p.textContent = cat.breeds[0].description;
           catInfo.appendChild(p);
-          const ul = document.createElement("ul");
+          const p2 = document.createElement("p");
+          p2.className = "temperament";
           const temperaments = cat.breeds[0].temperament.split(",");
-          temperaments.forEach((temperament) => {
-            const li = document.createElement("li");
-            li.textContent = temperament.trim();
-            ul.appendChild(li);
-          });
-          catInfo.appendChild(ul);
+          p2.innerHTML = "<strong>Temperament:</strong> " + temperaments.join(", ");
+          catInfo.appendChild(p2);
         }
         showElement(catInfo);
       })
