@@ -1,20 +1,6 @@
 import './style.css';
 import { fetchBreeds, fetchCatByBreed } from "./cat-api.js";
 
-function showError(message) {
-  const error = document.querySelector(".error");
-  error.textContent = message;
-  error.classList.remove("hidden");
-  error.classList.add("visible");
-}
-
-function hideError() {
-  const error = document.querySelector(".error");
-  error.classList.remove("visible");
-  error.classList.add("hidden");
-}
-// -------------------------
-
 function showElement(element) {
     if (element.hasAttribute('data-display')) {
       element.style.display = element.getAttribute('data-display');
@@ -63,6 +49,7 @@ function showElement(element) {
     }
     hideElement(catInfo);
     showElement(loader);
+
     fetchCatByBreed(breedId)
       .then((data) => {
         hideElement(loader);
@@ -84,11 +71,28 @@ function showElement(element) {
           const temperaments = cat.breeds[0].temperament.split(",");
           p2.innerHTML = "<strong>Temperament:</strong> " + temperaments.join(", ");
           catInfo.appendChild(p2);
-        }
-        showElement(catInfo);
+        } 
+        else {
+          showError("Sorry, no cat found for this breed.");
+        } 
+      showElement(catInfo); 
       })
       .catch((error) => {
         hideElement(loader);
         showError(error.message); 
       });
   });
+
+function showError(message) {
+  const error = document.querySelector(".error");
+  error.textContent = message;
+  error.classList.remove("hidden");
+  error.classList.add("visible");
+  error.style.display = "block";
+}
+
+function hideError() {
+  const error = document.querySelector(".error");
+  error.classList.remove("visible");
+  error.classList.add("hidden");
+}
