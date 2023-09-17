@@ -20,10 +20,6 @@ function showElement(element) {
   const loader = document.querySelector('.loader');
   const catInfo = document.querySelector('.cat-info');
   
-  hideElement(breedSelect);
-  showElement(loader);
-  hideElement(catInfo);
-  
   fetchBreeds()
   .then((breeds) => {
     hideElement(loader);
@@ -36,10 +32,6 @@ function showElement(element) {
     });
     showElement(breedSelect);
   })
-  .catch((error) => {
-    hideElement(loader);
-    showError(error.message); 
-  });
   
   breedSelect.addEventListener("change", (event) => {
     const breedId = event.target.value;
